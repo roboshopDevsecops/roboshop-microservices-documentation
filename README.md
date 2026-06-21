@@ -1,8 +1,72 @@
-# 00-Overview
+# RoboShop Microservices
+
+> **Documentation & deployment guide** for the RoboShop platform.  
+> **Full source code, CI/CD, and infrastructure** live in the [**roboshopDevsecops**](https://github.com/roboshopDevsecops) GitHub organization.
+
+## Quick Links
+
+| Resource | Link |
+|----------|------|
+| **Organization (all repos)** | [github.com/roboshopDevsecops](https://github.com/roboshopDevsecops) |
+| **Microservices source code** | See [Source Code Repositories](#source-code-repositories) below |
+| **Terraform / Kubernetes (v2)** | [roboshop-v2](https://github.com/roboshopDevsecops/roboshop-v2) |
+| **Helm charts (v1)** | [roboshop-helm-v1](https://github.com/roboshopDevsecops/roboshop-helm-v1) |
+| **CI/CD workflows** | [github-reusable-workflows](https://github.com/roboshopDevsecops/github-reusable-workflows) |
+| **Observability stack** | [ai-obs](https://github.com/roboshopDevsecops/ai-obs) |
+| **Load testing** | [load-test](https://github.com/roboshopDevsecops/load-test) |
 
 ## Application Description
 
 RoboShop Microservices is a cloud-native e-commerce application for robotics components. It consists of 9 services written in 5 programming languages, backed by 4 database types, with a Next.js static frontend served by Nginx.
+
+This repository contains the **architecture overview**, **13-step VM deployment guides**, and **setup artifacts**. Each microservice is maintained in its own repository under [roboshopDevsecops](https://github.com/roboshopDevsecops).
+
+## Source Code Repositories
+
+| Component | Repository | Technology |
+|-----------|------------|------------|
+| Frontend | [roboshop-frontend](https://github.com/roboshopDevsecops/roboshop-frontend) | Next.js / Nginx |
+| User Service | [roboshop-user](https://github.com/roboshopDevsecops/roboshop-user) | Node.js |
+| Catalogue Service | [roboshop-catalogue](https://github.com/roboshopDevsecops/roboshop-catalogue) | Go |
+| Cart Service | [roboshop-cart](https://github.com/roboshopDevsecops/roboshop-cart) | Node.js |
+| Shipping Service | [roboshop-shipping](https://github.com/roboshopDevsecops/roboshop-shipping) | Java |
+| Payment Service | [roboshop-payment](https://github.com/roboshopDevsecops/roboshop-payment) | Python |
+| Ratings Service | [roboshop-ratings](https://github.com/roboshopDevsecops/roboshop-ratings) | Python |
+| Orders Service | [roboshop-orders](https://github.com/roboshopDevsecops/roboshop-orders) | Java |
+| Notification Service | Setup guide: [11-notification.md](11-notification.md) | Python |
+
+> **Note** [roboshop-dispatch](https://github.com/roboshopDevsecops/roboshop-dispatch) is an additional supporting service in the organization.
+
+## Deployment Guides
+
+Step-by-step VM setup instructions (follow in order):
+
+| Step | Guide | What it unlocks |
+|------|-------|-----------------|
+| 1 | [01-frontend.md](01-frontend.md) | Storefront UI (API calls fail until backends are up) |
+| 2 | [02-mysql.md](02-mysql.md) | Shared relational database |
+| 3 | [03-catalogue.md](03-catalogue.md) | Product listings |
+| 4 | [04-mongodb.md](04-mongodb.md) | Document store for users |
+| 5 | [05-user.md](05-user.md) | Registration and login |
+| 6 | [06-valkey.md](06-valkey.md) | Cart session store |
+| 7 | [07-cart.md](07-cart.md) | Add-to-cart |
+| 8 | [08-shipping.md](08-shipping.md) | Shipping cost at checkout |
+| 9 | [09-rabbitmq.md](09-rabbitmq.md) | Message broker |
+| 10 | [10-payment.md](10-payment.md) | Checkout and payment |
+| 11 | [11-notification.md](11-notification.md) | Order notifications |
+| 12 | [12-orders.md](12-orders.md) | Order history |
+| 13 | [13-ratings.md](13-ratings.md) | Product ratings |
+
+## Platform & DevOps Repositories
+
+| Purpose | Repository |
+|---------|------------|
+| VM-based Terraform (v1) | [roboshop-v1](https://github.com/roboshopDevsecops/roboshop-v1) |
+| Kubernetes / EKS Terraform (v2) | [roboshop-v2](https://github.com/roboshopDevsecops/roboshop-v2) |
+| Helm deployment charts | [roboshop-helm-v1](https://github.com/roboshopDevsecops/roboshop-helm-v1) |
+| Reusable GitHub Actions | [github-reusable-workflows](https://github.com/roboshopDevsecops/github-reusable-workflows) |
+| Grafana / Prometheus / AI observability | [ai-obs](https://github.com/roboshopDevsecops/ai-obs) |
+| k6 / Locust load testing | [load-test](https://github.com/roboshopDevsecops/load-test) |
 
 ## Architecture
 
